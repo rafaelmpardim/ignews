@@ -1,10 +1,12 @@
-// Variáveis
-$cyan-500: #61dafb;
-$gray-100: #e1e1e6;
-$gray-300: #a8a8b3;
-$gray-900: #121214;
-$yellow: #eba417;
-$white: #ffffff;
+:root {
+  --cyan-500: #61dafb;
+  --gray-100: #e1e1e6;
+  --gray-300: #a8a8b3;
+  --gray-800: #29292e;
+  --gray-900: #121214;
+  --yellow: #eba417;
+  --white: #ffffff;
+}
 
 * {
   box-sizing: border-box;
@@ -25,8 +27,8 @@ $white: #ffffff;
 }
 
 body {
-  background: $gray-900;
-  color: $white;
+  background: var(--gray-900);
+  color: var(--white);
 }
 
 body, input, textarea, select, button {
