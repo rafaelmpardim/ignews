@@ -1,6 +1,8 @@
 import styles from './styles.module.scss'
 
 import Head from '../../../node_modules/next/head'
+import Link from '../../../node_modules/next/link'
+
 import { GetStaticProps } from '../../../node_modules/next/types/index'
 
 import { getPrismicClient } from '../../services/prismic'
@@ -30,11 +32,13 @@ export default function Posts({ posts }: PostsProps) {
         <div className={styles.posts}>
           {
             posts.map(post => (
-              <a key={post.slug} href="#">
-                <time>{post.updatedAt}</time>
-                <strong>{post.title}</strong>
-                <p>{post.excerpt}</p>
-              </a>
+              <Link key={post.slug} href={`/posts/${post.slug}`}>
+                <a>
+                  <time>{post.updatedAt}</time>
+                  <strong>{post.title}</strong>
+                  <p>{post.excerpt}</p>
+                </a>
+              </Link>
             ))
           }
         </div>
@@ -59,7 +63,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
-      excerpt: post.data.content.find(content => content.type === 'paragraph')?.test ??  '',
+      excerpt: post.data.content.find(content => content.type === 'paragraph')?.text ??  '',
       updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-BR', {
         day: '2-digit',
         month: 'long',
@@ -67,8 +71,6 @@ export const getStaticProps: GetStaticProps = async () => {
       })
     }
   })
-
-  console.log(JSON.stringify(response, null, 2))
 
   return {
     props: {
