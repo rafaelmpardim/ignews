@@ -1,4 +1,4 @@
-import { Head } from "../../../node_modules/next/document"
+import Head from '../../../node_modules/next/head'
 import { GetServerSideProps } from "../../../node_modules/next/types/index"
 import { getSession } from "../../../node_modules/next-auth/react/index"
 
@@ -19,9 +19,9 @@ interface PostProps {
 export default function Post({ post }: PostProps) { 
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>{post.title} | Ignews</title>
-      </Head> */}
+      </Head>
       <main className={styles.container}>
         <article className={styles.post}>
           <h1>{post.title}</h1>
@@ -38,9 +38,18 @@ export default function Post({ post }: PostProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const session = await getSession()
+  const session = await getSession({ req })
 
   const { slug } = params
+
+  if (!session?.activeSubscription) {
+    return {
+      redirect: {
+        destination: `/posts/preview/${slug}`,
+        permanent: false
+      }
+    }
+  }
 
   const prismic = getPrismicClient()
 

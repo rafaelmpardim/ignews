@@ -15,7 +15,7 @@ export function SignInButton() {
       onClick={() => signOut()}
     >
       <FaGithub color="#04d361"/>
-      {session.user.name}
+      {session.session.user.name}
       <FiX color="#737380" className={styles.closeIcon}/>
     </button>
   ) : (
