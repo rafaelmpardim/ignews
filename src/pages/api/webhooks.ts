@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "../../../node_modules/next/type
 
 import { Readable } from "stream"
 
-import Stripe from "../../../node_modules/stripe/types/lib"
+import Stripe from "../../../node_modules/stripe/lib/Webhooks"
 import { stripe } from "../../services/stripe"
 import { saveSubscription } from "./_lib/manageSubscription"
 

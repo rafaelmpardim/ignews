@@ -1,19 +1,31 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from "../../../node_modules/next/dist/shared/lib/utils"
+import { getSession } from '../../../node_modules/next-auth/react'
+
 import { stripe } from "../../services/stripe"
-import { getSession } from '../../../node_modules/next-auth/react/index'
+
 import { fauna } from "../../services/fauna"
 import { query as q } from "../../../node_modules/faunadb/index"
+
+interface UserData {
+  ref: {
+    id: string
+  },
+  data: {
+    email: string,
+    stripe_customer_id: string
+  }
+}
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const session = await getSession({ req })
 
-    const user = await fauna.query(
+    const user: UserData = await fauna.query(
       q.Get(
         q.Match(
           q.Index('user_by_email'),
-          q.Casefold(session.session.user.email)
+          q.Casefold(session.user.email)
         )
       )
     )
@@ -22,7 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!customerId) {
       const stripeCustomer = await stripe.customers.create({
-        email: session.session.user.email,
+        email: session.user.email,
       })
 
       await fauna.query(
@@ -50,8 +62,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ],
       mode: 'subscription',
       allow_promotion_codes: true,
-      success_url: process.env.STRIPE_SUCCESS_URL,
-      cancel_url: process.env.STRIPE_CANCEL_URL
+      success_url: process.env.isDevelopment ? process.env.STRIPE_SUCCESS_URL : "https://blog.madeincode.com.br/posts",
+      cancel_url: process.env.isDevelopment ? process.env.STRIPE_CANCEL_URL : "https://blog.madeincode.com.br"
     })
 
     return res.status(200).json({ sessionId: stripeCheckoutSession.id })

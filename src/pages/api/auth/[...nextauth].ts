@@ -9,11 +9,10 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      scope: 'read:user'
     }),
   ],
   callbacks: {
-    async session(session) {
+    async session({ session, token, user}) {
       try {
         const userActiveSubscription = await fauna.query(
           q.Get(
@@ -25,7 +24,7 @@ export default NextAuth({
                   q.Get(
                     q.Match(
                       q.Index('user_by_email'),
-                      q.Casefold(session.session.user.email)
+                      q.Casefold(session.user.email)
                     )
                   )
                 )
