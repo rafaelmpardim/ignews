@@ -1,0 +1,15 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/api/_lib/manageSubscription": "pages/api/_lib/manageSubscription.js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/api/subscribe": "pages/api/subscribe.js",
+  "/api/users": "pages/api/users.js",
+  "/_error": "pages/_error.js",
+  "/api/webhooks": "pages/api/webhooks.js",
+  "/": "pages/index.js",
+  "/posts": "pages/posts.js",
+  "/posts/[slug]": "pages/posts/[slug].js",
+  "/posts/preview/[slug]": "pages/posts/preview/[slug].js",
+  "/404": "pages/404.html"
+}
