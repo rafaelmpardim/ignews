@@ -62,8 +62,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ],
       mode: 'subscription',
       allow_promotion_codes: true,
-      success_url: process.env.isDevelopment ? process.env.STRIPE_SUCCESS_URL : "https://blog.madeincode.com.br/posts",
-      cancel_url: process.env.isDevelopment ? process.env.STRIPE_CANCEL_URL : "https://blog.madeincode.com.br"
+      success_url: process.env.STRIPE_SUCCESS_URL,
+      cancel_url: process.env.STRIPE_CANCEL_URL
     })
 
     return res.status(200).json({ sessionId: stripeCheckoutSession.id })
