@@ -2,11 +2,10 @@
   "name": "ignews",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://supablog.supatechie.ga",
+  "homepage": "https://ignews-five-virid.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "slicemachine": "start-slicemachine"
   },
