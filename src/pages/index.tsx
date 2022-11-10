@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from '../../node_modules/next/head'
 
 import { GetStaticProps } from '../../node_modules/next/types/index'
@@ -19,7 +20,7 @@ export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
-        <title>ig.news | Home</title>
+        <title>Ignews | Home</title>
       </Head>
 
       <main className={styles.contentContainer}>

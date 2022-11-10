@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Head from '../../../../node_modules/next/head'
 import { GetStaticProps } from "../../../../node_modules/next/types/index"
 import { useSession } from "../../../../node_modules/next-auth/react/index"
