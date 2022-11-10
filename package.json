@@ -1,8 +1,9 @@
 {
   "name": "ignews",
-  "version": "2.1.0",
+  "author": "Rafael Pardim",
+  "version": "3.0.0",
   "private": true,
-  "homepage": "https://ignews-five-virid.vercel.app/",
+  "homepage": "https://rafaelmpardim-ignews.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
