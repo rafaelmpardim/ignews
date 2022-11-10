@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from '../../node_modules/next/head'
+import Head from 'next/head'
+import { GetStaticProps } from 'next/types'
 
-import { GetStaticProps } from '../../node_modules/next/types/index'
-
-import { SubscribeButton } from '../components/SubscribeButton/index'
 import { stripe } from '../services/stripe'
 
+import { SubscribeButton } from '../components/SubscribeButton'
+
 import styles from '../styles/home.module.scss'
+import { Footer } from '../components/Footer'
 
 interface HomeProps {
   product: {
@@ -17,43 +18,45 @@ interface HomeProps {
 
 export default function Home({ product }: HomeProps) {
 
-  return (
-    <>
-      <Head>
-        <title>Ignews | Home</title>
-      </Head>
+	return (
+		<>
+			<Head>
+				<title>Ignews | Home</title>
+			</Head>
 
-      <main className={styles.contentContainer}>
-        <section className={styles.hero}>
-          <span>👏 Hey, welcome</span>
-          <h1>News about the <span>React</span> world.</h1>
-          <p>
-            Get access to all the publications<br/>
-            <span>for {product.amount} month</span>
-          </p>
-          <SubscribeButton priceId={product.priceId}/>
-        </section>
-        <img src="/images/avatar.svg" alt="Gril coding" />
-      </main>
-    </>
-  )
+			<main className={styles.contentContainer}>
+				<section className={styles.hero}>
+					<span>👏 Olá, seja bem-vindo!</span>
+					<h1>Acompanhe meus artigos sobre <span>tecnologia</span></h1>
+					<p>
+            Tenha acesso ao conteúdo completo<br/>
+						<span>pagando {product.amount} ao mês</span>
+					</p>
+					<SubscribeButton priceId={product.priceId}/>
+				</section>
+				<img src="/images/avatar.svg" alt="Gril coding" />
+			</main>
+
+			<Footer />
+		</>
+	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve(process.env.STRIPE_PRICE_ID_SUBSCRIPTION)
+	const price = await stripe.prices.retrieve(process.env.STRIPE_PRICE_ID_SUBSCRIPTION)
 
-  const product = {
-    priceId: price.id,
-    amount: new Intl.NumberFormat('es-US', {
-      style: 'currency',
-      currency: 'USD'
-    },).format(price.unit_amount / 100)
-  }
+	const product = {
+		priceId: price.id,
+		amount: new Intl.NumberFormat('pt-BR', {
+			style: 'currency',
+			currency: 'BRL'
+		},).format(price.unit_amount / 100)
+	}
 
-  return {
-    props: {
-      product
-    },
-    revalidate: 60 * 60 * 24 // 24 hours
-  }
+	return {
+		props: {
+			product
+		},
+		revalidate: 60 * 60 * 24 // 24 hours
+	}
 }

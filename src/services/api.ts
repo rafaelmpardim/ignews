@@ -1,5 +1,5 @@
-import axios from '../../node_modules/axios/index'
+import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: '/api'
+	baseURL: '/api'
 })

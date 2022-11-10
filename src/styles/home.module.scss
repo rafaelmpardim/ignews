@@ -1,11 +1,28 @@
 .contentContainer {
   align-items: center;
   display: flex;
-  height: calc(100vh - 5rem);
+  min-height: calc(100vh - 10rem);
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1120px;
-  padding: 0 2rem;
+  padding: 2rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 3rem;
+
+    & img {
+      max-width: 50%;
+      order: -11;
+    }
+
+    & .hero {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
 }
 
 .hero {

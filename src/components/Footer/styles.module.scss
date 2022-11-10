@@ -1,0 +1,16 @@
+.footerContainer {
+  border-top: 1px solid var(--gray-800);
+  height: 5rem;
+}
+
+.footerContent {
+  align-items: center;
+  display: flex;
+  gap: 1.5rem;
+  height: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 0 2rem;
+  text-align: center;
+}

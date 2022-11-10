@@ -1,31 +1,62 @@
 .headerContainer {
   border-bottom: 1px solid var(--gray-800);
   height: 5rem;
+
+  @media (max-width: 500px) {
+    height: auto;
+    padding: 2rem 2rem 0 2rem;
+  }
 }
 
 .headerContent {
   align-items: center;
   display: flex;
-  height: 5rem;
+  gap: 1.5rem;
+  height: 100%;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 1120px;
   padding: 0 2rem;
 
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  img {
+    @media (max-width: 620px) {
+      max-width: 80px;
+    }
+  }
+
   nav {
     height: 5rem;
-    margin-left: 5rem;
+
+    @media (max-width: 482px) {
+      height: auto;
+      order: 2;
+    }
 
     a {
       color: var(--gray-300);
       display: inline-block;
-      height: 5rem;
+      height: 100%;
       line-height: 5rem;
       padding: 0 .5rem;
       position: relative;
       transition: color .2s;
 
+      @media (max-width: 482px) {
+        line-height: 3.5rem;
+
+      }
+
       & + a {
-        margin-left: 2rem;
+        margin-left: 1.5rem;
+
+        @media (max-width: 620px) {
+          margin-left: 1rem;
+        }
       }
 
       &:hover {
@@ -48,9 +79,5 @@
         }
       }
     }
-  }
-
-  button {
-    margin-left: auto;
   }
 }
