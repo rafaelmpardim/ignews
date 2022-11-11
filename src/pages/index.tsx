@@ -22,6 +22,26 @@ export default function Home({ product }: HomeProps) {
 		<>
 			<Head>
 				<title>Ignews | Home</title>
+
+				{/* <!-- Meta SEO --> */}
+				<meta name="author" content="Rafael Pardim" />
+				<meta name="description" content="Novidades diárias da bolha tech ao seu alcance!" />
+				<meta name="robots" content="index, follow" />
+
+				{/* <!-- Meta SEO Social - Facebook --> */}
+				<meta property="og:type" content="company" />
+				<meta property="og:url" content="https://rafaelmpardim-ignews.vercel.app" />
+				<meta property="og:site_name" content="Ignews - Newslatter da bolha tech" />
+				<meta property="og:title" content="Ignews" />
+				<meta property="og:description" content="Novidades diárias da bolha tech ao seu alcance!" />
+				<meta property="og:image" content="https://user-images.githubusercontent.com/83538547/201237436-0c249834-5b2c-4e55-af23-240a6d7a2af3.png" />
+
+				{/* <!--  Meta SEO Social - Twitter --> */}
+				<meta name="twitter:cards" content="summary" />
+				<meta name="twitter:url" content="https://rafaelmpardim-ignews.vercel.app" />
+				<meta name="twitter:title" content="Ignews - Newslatter da bolha tech" />
+				<meta name="twitter:description" content="Novidades diárias da bolha tech ao seu alcance!" />
+				<meta property="twitter:image" content="https://user-images.githubusercontent.com/83538547/201237436-0c249834-5b2c-4e55-af23-240a6d7a2af3.png" />
 			</Head>
 
 			<main className={styles.contentContainer}>
