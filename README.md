@@ -12,7 +12,7 @@
 <br>
 
 <p align="center">
-  <img alt="" src="" width="100%">
+  <img alt="Página do Ignews" src="https://user-images.githubusercontent.com/83538547/201237436-0c249834-5b2c-4e55-af23-240a6d7a2af3.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
